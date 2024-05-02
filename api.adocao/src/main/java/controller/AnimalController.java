@@ -19,5 +19,5 @@ public class AnimalController {
     public void cadastrarAnimal(@RequestBody Animal animal){
         animalService.inserirAnimal(animal);
     }
-
 }
+
