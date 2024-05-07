@@ -1,9 +1,9 @@
-package service;
+package com.example.api.adocao.service;
 
-import model.Animal;
+import com.example.api.adocao.dto.AnimalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.AnimalRepository;
+import com.example.api.adocao.repository.AnimalRepository;
 
 @Service
 public class AnimalService {
@@ -11,7 +11,7 @@ public class AnimalService {
     @Autowired
     private AnimalRepository animalRepository;
 
-    public void inserirAnimal(Animal animal) {
+    public void inserirAnimal(AnimalDTO animal) {
         animalRepository.inserirAnimal(animal);
     }
 }
