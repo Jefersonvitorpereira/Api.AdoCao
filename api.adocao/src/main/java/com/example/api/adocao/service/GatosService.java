@@ -14,7 +14,7 @@ public class GatosService {
     @Autowired
     GatosRepository gatosRepository;
 
-        public List<GatosDTO> listagemGatos(Gatos gatos) {
-       return gatosRepository.listagemGatos(gatos);
+    public List<GatosDTO> listagemGatos(Gatos gatos) {
+        return gatosRepository.listagemGatos(gatos);
     }
 }

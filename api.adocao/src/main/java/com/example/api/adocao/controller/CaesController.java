@@ -1,7 +1,6 @@
 package com.example.api.adocao.controller;
 
-import com.example.api.adocao.dto.AnimalDTO;
-import com.example.api.adocao.dto.CaesDTO;
+import com.example.api.adocao.dto.AnimalListagemDTO;
 import com.example.api.adocao.model.Caes;
 import com.example.api.adocao.service.CaesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,9 @@ public class CaesController {
     CaesService caesService;
 
     @GetMapping
-    public List<CaesDTO> listagemCaes(Caes caes){
+    public List<AnimalListagemDTO> listagemCaes(Caes caes) {
 
-       return caesService.listagemCaes(caes);
+        return caesService.listagemCaes(caes);
     }
 
 

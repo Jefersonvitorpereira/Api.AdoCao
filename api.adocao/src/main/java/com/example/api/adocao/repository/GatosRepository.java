@@ -1,8 +1,6 @@
 package com.example.api.adocao.repository;
 
-import com.example.api.adocao.dto.CaesDTO;
 import com.example.api.adocao.dto.GatosDTO;
-import com.example.api.adocao.model.Caes;
 import com.example.api.adocao.model.Gatos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

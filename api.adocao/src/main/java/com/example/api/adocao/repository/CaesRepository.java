@@ -1,8 +1,6 @@
 package com.example.api.adocao.repository;
 
-import com.example.api.adocao.dto.AnimalDTO;
-import com.example.api.adocao.dto.CaesDTO;
-import com.example.api.adocao.model.Animal;
+import com.example.api.adocao.dto.AnimalListagemDTO;
 import com.example.api.adocao.model.Caes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,10 +13,10 @@ public class CaesRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<CaesDTO> listagemCaes(Caes caes) {
+    public List<AnimalListagemDTO> listagemCaes(Caes caes) {
         String sql = "SELECT id, nome, idade_Ano, idade_Mes, cor_Pelo, porte_Tamanho, pelagem, castrado, disponibilidade, sexo FROM ANIMAL WHERE ID_ESPECIE = 1";
         return jdbcTemplate.query(sql, (rs, rowNum) ->
-                new CaesDTO(
+                new AnimalListagemDTO(
                         rs.getLong("id"),
                         rs.getString("nome"),
                         rs.getLong("idade_Ano"),
