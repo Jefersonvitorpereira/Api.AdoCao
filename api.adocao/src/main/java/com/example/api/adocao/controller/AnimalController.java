@@ -1,11 +1,12 @@
 package com.example.api.adocao.controller;
 
 import com.example.api.adocao.dto.AnimalDTO;
-import com.example.api.adocao.dto.AnimalListagemDTO;
+import com.example.api.adocao.dto.AnimalListDTO;
 import com.example.api.adocao.model.Animal;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import com.example.api.adocao.service.AnimalService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,26 +18,21 @@ public class AnimalController {
     AnimalService animalService;
 
     @PostMapping
-    public void cadastrarAnimal(@RequestBody AnimalDTO animal) {
+    public ResponseEntity<String> cadastrarAnimal(@RequestBody AnimalDTO animal) {
         animalService.inserirAnimal(animal);
+        return ResponseEntity.ok("Animal cadastrado com sucesso!");
     }
 
     @GetMapping
-    public List<AnimalListagemDTO> listagemAnimal(Animal animal) {
+    public List<AnimalListDTO> listagemAnimal(Animal animal) {
         return animalService.listagemAnimal(animal);
     }
 
     @GetMapping("/especie")
-    public List<AnimalListagemDTO> listagemAnimalPorEspecie(@RequestParam Long id_Especie) {
+    public List<AnimalListDTO> listagemAnimalPorEspecie(@RequestParam Long id_Especie) {
         return animalService.listagemAnimalPorEspecie(id_Especie);
     }
 
-
-//    @GetMapping("/{id_Especie}")
-//    public List<AnimalListagemDTO> listagemAnimal(@PathVariable Animal id_Especie) {
-//        Animal animal = (Animal) animalService.listagemAnimal(id_Especie);
-//        return animalService.listagemAnimal(animal);
-//    }
 }
 
 

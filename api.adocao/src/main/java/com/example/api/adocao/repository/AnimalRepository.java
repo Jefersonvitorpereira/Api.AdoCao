@@ -1,7 +1,7 @@
 package com.example.api.adocao.repository;
 
 import com.example.api.adocao.dto.AnimalDTO;
-import com.example.api.adocao.dto.AnimalListagemDTO;
+import com.example.api.adocao.dto.AnimalListDTO;
 import com.example.api.adocao.model.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,10 +21,10 @@ public class AnimalRepository {
         jdbcTemplate.update(sql, animal.nome(), animal.idadeAno(), animal.idadeMes(), animal.corPelo(), animal.porteTamanho(), animal.pelagem(), animal.castrado(), animal.disponibilidade(), animal.sexo(), animal.especie());
     }
 
-    public List<AnimalListagemDTO> listagemAnimal(Animal animal) {
+    public List<AnimalListDTO> listagemAnimal(Animal animal) {
         String sql = "SELECT id, nome, idade_Ano, idade_Mes, cor_Pelo, porte_Tamanho, pelagem, castrado, disponibilidade, sexo FROM ANIMAL ";
         return jdbcTemplate.query(sql, (rs, rowNum) ->
-                new AnimalListagemDTO(
+                new AnimalListDTO(
                         rs.getLong("id"),
                         rs.getString("nome"),
                         rs.getLong("idade_Ano"),
@@ -39,14 +39,14 @@ public class AnimalRepository {
         );
     }
 
-    public List<AnimalListagemDTO> listagemAnimalPorEspecie(Long id_Especie) {
+    public List<AnimalListDTO> listagemAnimalPorEspecie(Long id_Especie) {
         String sql = "SELECT id, nome, idade_Ano, idade_Mes, cor_Pelo, porte_Tamanho, pelagem, castrado, disponibilidade, sexo FROM ANIMAL";
 
         // Adiciona a condição WHERE se id_Especie for fornecido
         if (id_Especie != null) {
             sql += " WHERE id_Especie = ?";
             return jdbcTemplate.query(sql, new Object[]{id_Especie}, (rs, rowNum) ->
-                    new AnimalListagemDTO(
+                    new AnimalListDTO(
                             rs.getLong("id"),
                             rs.getString("nome"),
                             rs.getLong("idade_Ano"),
@@ -61,7 +61,7 @@ public class AnimalRepository {
             );
         } else {
             return jdbcTemplate.query(sql, (rs, rowNum) ->
-                    new AnimalListagemDTO(
+                    new AnimalListDTO(
                             rs.getLong("id"),
                             rs.getString("nome"),
                             rs.getLong("idade_Ano"),
@@ -76,6 +76,5 @@ public class AnimalRepository {
             );
         }
     }
-
 
 }

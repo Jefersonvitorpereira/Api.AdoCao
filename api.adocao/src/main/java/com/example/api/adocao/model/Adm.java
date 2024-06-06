@@ -9,8 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
+public class Adm {
     private Long id;
-    private String username;
-    private String password;
+    private String usuario;
+    private String senha;
+    private Long idUsuario;
 }
